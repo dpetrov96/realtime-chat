@@ -1,20 +1,26 @@
 import Head from 'next/head'
 
-import { trpc } from '@/utils/trpc'
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
-  const { mutateAsync: loginUser } = trpc.authRouter.loginUser.useMutation();
-  const { mutateAsync: createUser } = trpc.authRouter.createUser.useMutation();
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "loading") return;
+
+    if (!session) {
+      router.replace("/sign-in");
+    }
+  }, [router, session, status]);
 
   return (
     <main>
       <Head>
         <title>Realtime chat</title>
       </Head>
-      <div>
-        <button onClick={() => createUser({ username: "test2", email: "test2@test.com", password: "password" })}>Register</button>
-        <button onClick={() => loginUser({ email: "test2@test.com", password: "password" })}>Login</button>
-      </div>
     </main>
   )
 }
