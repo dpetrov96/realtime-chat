@@ -12,7 +12,7 @@ export default function Home() {
     if (status === "loading") return;
 
     if (!session) {
-      router.replace("/sign-in");
+      router.push("/sign-in");
     }
   }, [router, session, status]);
 
