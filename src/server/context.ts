@@ -6,6 +6,8 @@ import { Db, MongoClient } from "mongodb";
 import EventEmitter from "events";
 
 import { BaseUser } from "@/models/User";
+import { Message } from "@/models/Message";
+import { Group } from "@/models/Group";
 import clientPromise from "@/utils/dbConnect";
 import logger from "@/utils/logger";
 
@@ -28,6 +30,8 @@ export const createContext = async (
 
   const collections = {
     user: db.collection<BaseUser>("users"),
+    message: db.collection<Message>("messages"),
+    group: db.collection<Group>("groups"),
   };
 
   return {

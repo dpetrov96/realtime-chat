@@ -34,7 +34,7 @@ export default function SignIn() {
       <Head>
         <title>Sign In</title>
       </Head>
-      <div>
+      <div className="container mx-auto">
         <form
           onSubmit={handleSubmit(async ({ email, password }) => {
             const user = await trpcLogin({ email, password });
@@ -56,7 +56,7 @@ export default function SignIn() {
             error={errors?.password?.message}
             {...register("password")}
           />
-          <Button type="submit">Sign in</Button>
+          <Button type="submit">Login</Button>
         </form>
         <button
           className="font-semibold text-indigo-600 hover:text-indigo-500"

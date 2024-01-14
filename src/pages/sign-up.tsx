@@ -35,7 +35,7 @@ export default function SignUp() {
       <Head>
         <title>Sign Up</title>
       </Head>
-      <div>
+      <div className="container mx-auto">
         <form
           onSubmit={handleSubmit(async ({ username, email, password }) => {
             await trpcSignUp({ username, email, password });

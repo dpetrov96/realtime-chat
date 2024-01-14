@@ -2,16 +2,19 @@ import { useEffect } from 'react';
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import { useSession } from "next-auth/react";
+import { useSession } from 'next-auth/react';
+import { useParams } from 'next/navigation'
 
 const GroupsList = dynamic(() => import("@/components/GroupsList"), {
   ssr: false,
 });
 
 
-export default function Home() {
+export default function Group() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const params = useParams();
+  const groupId = `${params?.groupId}`;
 
   useEffect(() => {
     if (status === "loading") return;
@@ -27,7 +30,7 @@ export default function Home() {
         <title>Realtime chat</title>
       </Head>
       <div className="flex">
-        <GroupsList />
+        <GroupsList selectedGroupId={groupId} />
       </div>
     </main>
   )
