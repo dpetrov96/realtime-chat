@@ -52,6 +52,7 @@ export default function SignIn() {
           />
           <Input
             label="Password"
+            type="password"
             error={errors?.password?.message}
             {...register("password")}
           />

@@ -56,6 +56,7 @@ export default function SignUp() {
           <Input
             label="Password"
             error={errors?.password?.message}
+            type="password"
             {...register("password")}
           />
           <Button type="submit">Register</Button>

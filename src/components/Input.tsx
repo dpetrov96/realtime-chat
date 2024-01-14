@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 
 type InputProps = {
     label: string;
+    type?: "text" | "password" | "number";
     error?: string;
 };
   
