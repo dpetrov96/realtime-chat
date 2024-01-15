@@ -14,7 +14,7 @@ export type UserSelectorProps = {
 }
 
 const UsersSelector = ({ users, onClickUser, selectedUsers }: UserSelectorProps) => (
-  <div className="max-h-[300px] overflow-y-auto">
+  <div className="max-h-[300px] overflow-y-auto rounded-md shadow-[inset_0_0_4px_rgba(0,0,0,0.2)]">
     {users?.map(({ id, username, email }) => {
       const isSelected = selectedUsers?.includes(id);
 

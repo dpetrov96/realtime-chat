@@ -34,7 +34,7 @@ const GroupPage = () => {
   return (
     <>
       <Head>
-        <title>Realtime chat</title>
+        <title>Team GPT Chat</title>
       </Head>
       <Header />
       <main className="flex w-full h-[calc(100vh-theme(space.14))] mt-14">
