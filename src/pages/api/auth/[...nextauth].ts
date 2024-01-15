@@ -1,5 +1,5 @@
-import NextAuth, { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import NextAuth, { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -30,7 +30,13 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    session: async ({ session }) => session,
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        // @ts-ignore
+        session.user.id = token.sub;
+      }
+      return session;
+    },
     jwt: async ({ user, token }) => {
       if (user) {
         token.sub = user.id;

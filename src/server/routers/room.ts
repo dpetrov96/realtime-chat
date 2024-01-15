@@ -138,7 +138,7 @@ export const roomRouter = router({
     const groupWithLastMessage = await Promise.all(
       groups.map(async (group) => {
         if (!group.messages?.length)
-          return { ...group, lastMessage: "" };
+          return { ...group, lastMessage: "No messages" };
         const message = await ctx.collections.message.findOne({
           _id: new ObjectId(String(group.messages[group.messages.length - 1])),
         });
