@@ -42,10 +42,12 @@ const CreateGroupForm = ({ onCreateGroup }: CreateGroupFormProps) => {
           users={usersList}
           selectedUsers={selectedUserIds}
           onClickUser={({ id }) => {
+            // @ts-ignore
             if(selectedUserIds?.includes(id)) {
               setValue("userIds", selectedUserIds?.filter((currentId) => currentId !== id))
             } else {
-              setValue("userIds", [...selectedUserIds, id])
+              // @ts-ignore
+              setValue("userIds", selectedUserIds?.length ? [...selectedUserIds, id] : [id])
             }
           }}
         />

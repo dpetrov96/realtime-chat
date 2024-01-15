@@ -6,11 +6,13 @@ export type DialogProps = {
 
 const Dialog = ({ isOpen, title, children }: DialogProps) => isOpen ? (
   <div
-    className="fixed w-full h-full flex items-center justify-center left-0 top-0 bg-white/70"
+    className="fixed z-20 w-full h-full flex items-center justify-center left-0 top-0 bg-white/70"
   >
-    <div className="bg-white p-4 rounded-sm shadow-xl">
+    <div className="border border-gray-200 w-[340px] bg-white p-4 rounded-md shadow-lg">
       {Boolean(title) && (
-        <h2>{title}</h2>
+        <h2 className="text-xl text-center mb-4 font-bold">
+          {title}
+        </h2>
       )}
       {children}
     </div>
