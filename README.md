@@ -1,3 +1,5 @@
+<img width="1512" alt="image" src="https://github.com/dpetrov96/realtime-chat/assets/16683108/6309a498-bc0e-4cce-8172-00897261bda8">
+
 # How to run the project
 
 ## Install packages
