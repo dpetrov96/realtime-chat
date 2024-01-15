@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full z-10 flex items-center justify-between border-b-2 bg-white px-5 py-2">
-      <div className="text-2xl font-semibold">RealTime Chat</div>
+      <div className="text-2xl font-semibold">Team GPT</div>
       <div className="relative">
         <Avatar
           size="40"

@@ -1,10 +1,17 @@
-import { ReactElement, useEffect } from 'react';
+import { useEffect } from 'react';
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { useSession } from 'next-auth/react';
 import { useParams } from 'next/navigation'
-import MessagesLayout from '@/layouts/MessagesLayout';
+
+const Header = dynamic(() => import("@/components/Header"), {
+  ssr: false,
+});
+
+const GroupsList = dynamic(() => import("@/components/GroupsList"), {
+  ssr: false,
+});
 
 const Messages = dynamic(() => import("@/components/Messages/index"), {
   ssr: false,
@@ -29,16 +36,16 @@ const GroupPage = () => {
       <Head>
         <title>Realtime chat</title>
       </Head>
-      <Messages groupId={groupId} />
+      <Header />
+      <main className="flex w-full h-[calc(100vh-theme(space.14))] mt-14">
+        <div className="w-full md:w-[300px] h-full border-r border-gray-200">
+          <GroupsList selectedGroupId={groupId} />
+        </div>
+        <div className="hidden md:flex w-[calc(100%-300px)] h-full">
+          <Messages groupId={groupId} />
+        </div>
+      </main>
     </>
-  )
-}
-
-GroupPage.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <MessagesLayout>
-      {page}
-    </MessagesLayout>
   )
 }
 
