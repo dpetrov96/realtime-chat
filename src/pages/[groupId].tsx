@@ -9,6 +9,10 @@ const GroupsList = dynamic(() => import("@/components/GroupsList"), {
   ssr: false,
 });
 
+const Messages = dynamic(() => import("@/components/Messages/index"), {
+  ssr: false,
+});
+
 
 export default function Group() {
   const { data: session, status } = useSession();
@@ -30,7 +34,12 @@ export default function Group() {
         <title>Realtime chat</title>
       </Head>
       <div className="flex">
-        <GroupsList selectedGroupId={groupId} />
+        <div className="w-[240px] h-screen">
+          <GroupsList selectedGroupId={groupId} />
+        </div>
+        <div className="w-[calc(100%-240px)] h-screen">
+          <Messages groupId={groupId} />
+        </div>
       </div>
     </main>
   )

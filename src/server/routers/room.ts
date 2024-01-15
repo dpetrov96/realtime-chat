@@ -23,6 +23,7 @@ export const roomRouter = router({
       const message = await collections.message.insertOne({
         text: input.text,
         userId: new ObjectId(String(user?.id)),
+        email: String(user?.email),
         groupId: new ObjectId(String(input.groupId)),
         createdAt: new Date(),
       });

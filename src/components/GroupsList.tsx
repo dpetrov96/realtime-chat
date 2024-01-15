@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Avatar from 'react-avatar';
 
 import { trpc } from '@/utils/trpc';
-
 import { Button, Dialog, CreateGroupForm } from '@/components';
 
 type Props = {
@@ -26,9 +26,15 @@ const GroupsList = ({ onSelectGroup, selectedGroupId }: Props) => {
             key={`${groupId}-${name}`}
             style={{ backgroundColor: selectedGroupId === `${_id}` ? "blue" : "transparent" }}
             onClick={() => router.push(`/${groupId}`)}
+            className="flex gap-2"
           >
-            <p>{name}</p>
-            <p>{lastMessage}</p>
+            <div>
+              <Avatar name={name} size="40" round />
+            </div>
+            <div>
+              <p>{name}</p>
+              <p>{lastMessage}</p>
+            </div>
           </div>
         )
       })}
