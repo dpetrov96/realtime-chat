@@ -40,8 +40,8 @@ const SignIn = () => {
       <Head>
         <title>Sign In</title>
       </Head>
-      <div className="flex w-full items-center justify-center min-h-screen">
-        <div className="w-[400px] border border-gray-100 mx-auto p-10 shadow-md rounded-md">
+      <div className="flex w-full items-center justify-center min-h-screen px-4">
+        <div className="w-full sm:w-[400px] border border-gray-100 mx-auto p-10 shadow-md rounded-md">
           <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in to your account
           </h2>

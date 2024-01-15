@@ -41,8 +41,8 @@ const SignUp = () => {
       <Head>
         <title>Sign up</title>
       </Head>
-      <div className="flex w-full items-center justify-center min-h-screen">
-        <div className="w-[400px] border border-gray-100 mx-auto p-10 shadow-md rounded-md">
+      <div className="flex w-full items-center justify-center min-h-screen px-4">
+        <div className="w-full sm:w-[400px] border border-gray-100 mx-auto p-10 shadow-md rounded-md">
           <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Please register
           </h2>
