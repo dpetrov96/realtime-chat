@@ -48,7 +48,11 @@ const GroupsList = ({ selectedGroupId }: Props) => {
       >
         <NewMessage className="w-5 h-5" /> Create Group
       </button>
-      <Dialog title="Create Group" isOpen={createNewIsOpen}>
+      <Dialog
+        title="Create Group"
+        isOpen={createNewIsOpen}
+        onClose={() => setCreateNewIsOpen(false)}
+      >
         <CreateGroupForm
           onCreateGroup={() => {
             refetchGroups();
