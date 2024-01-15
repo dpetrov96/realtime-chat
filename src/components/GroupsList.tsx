@@ -5,7 +5,7 @@ import Avatar from 'react-avatar';
 
 import { trpc } from '@/utils/trpc';
 import { Dialog, CreateGroupForm } from '@/components';
-import { NewMessage } from '@/icons';
+import { NewMessageIcon } from '@/icons';
 
 type Props = {
   selectedGroupId?: string;
@@ -46,7 +46,7 @@ const GroupsList = ({ selectedGroupId }: Props) => {
         className="w-full flex items-center gap-3 justify-center left-0 bottom-0 bg-white p-4 border-t border-t-gray-200 font-semibold text-indigo-600 hover:text-indigo-500 hover:bg-gray-200 transition-all"
         onClick={() => setCreateNewIsOpen(true)}
       >
-        <NewMessage className="w-5 h-5" /> Create Group
+        <NewMessageIcon className="w-5 h-5" /> Create Group
       </button>
       <Dialog
         title="Create Group"

@@ -1,6 +1,6 @@
 import React, { FC, SVGProps } from 'react';
 
-const NewMessage: FC<SVGProps<SVGSVGElement>> = (props) => (
+const NewMessageIcon: FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
@@ -11,4 +11,4 @@ const NewMessage: FC<SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
-export default NewMessage;
+export default NewMessageIcon;

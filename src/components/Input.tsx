@@ -5,6 +5,7 @@ type InputProps = {
   label: string;
   type?: "text" | "password" | "number";
   error?: string;
+  placeholder?: string;
 };
 
 // eslint-disable-next-line react/display-name

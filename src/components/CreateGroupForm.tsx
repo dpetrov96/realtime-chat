@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import { trpc } from '@/utils/trpc';
@@ -8,9 +8,15 @@ import { createGroupSchema } from '@/schema';
 
 export type CreateGroupFormProps = {
   onCreateGroup?: () => void;
-}
+};
 
 type FormType = z.infer<typeof createGroupSchema>;
+
+const SET_VALUE_OPTIONS = {
+  shouldDirty: true,
+  shouldValidate: true,
+  shouldTouch: true,
+};
 
 const CreateGroupForm = ({ onCreateGroup }: CreateGroupFormProps) => {
   const { data: users } = trpc.userRouter.getUsers.useQuery();
@@ -40,6 +46,7 @@ const CreateGroupForm = ({ onCreateGroup }: CreateGroupFormProps) => {
       <Input
         label="Group name"
         error={errors?.name?.message}
+        placeholder="Chat with friends..."
         {...register("name")}
       />
       {usersList?.length ? (
@@ -49,9 +56,17 @@ const CreateGroupForm = ({ onCreateGroup }: CreateGroupFormProps) => {
           error={errors?.userIds?.message}
           onClickUser={({ id }) => {
             if(selectedUserIds?.includes(id)) {
-              setValue("userIds", selectedUserIds?.filter((currentId) => currentId !== id))
+              setValue(
+                "userIds",
+                selectedUserIds?.filter((currentId) => currentId !== id),
+                SET_VALUE_OPTIONS
+              )
             } else {
-              setValue("userIds", selectedUserIds?.length ? [...selectedUserIds, id] : [id])
+              setValue(
+                "userIds",
+                selectedUserIds?.length ? [...selectedUserIds, id] : [id],
+                SET_VALUE_OPTIONS
+              )
             }
           }}
         />

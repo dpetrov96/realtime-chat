@@ -1,3 +1,3 @@
 export { default as SendIcon } from "./SendIcon";
-export { default as NewMessage } from "./NewMessage";
+export { default as NewMessageIcon } from "./NewMessageIcon";
 export { default as CloseIcon } from "./CloseIcon";

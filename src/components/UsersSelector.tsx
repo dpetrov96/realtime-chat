@@ -25,7 +25,7 @@ const UsersSelector = ({ users, onClickUser, selectedUsers, error }: UserSelecto
             <div
               onClick={() => onClickUser?.({ id, username, email })}
               className={clsx(
-                "cursor-pointer flex gap-3 items-center border-b border-b-gray-200 py-2 px-2",
+                "select-none cursor-pointer flex gap-3 items-center border-b border-b-gray-200 py-2 px-2",
                 isSelected && "bg-gray-100"
               )}
             >
@@ -33,8 +33,8 @@ const UsersSelector = ({ users, onClickUser, selectedUsers, error }: UserSelecto
               <div className="flex items-center gap-2">
                 <Avarar name={username} size="30" round />
                 <div>
-                  <span className="block text-sm font-semibold">{username}</span>
-                  <span className="block text-xs italic text-gray-500">{email}</span>
+                  <span className="block text-sm font-semibold truncate">{username}</span>
+                  <span className="block text-xs italic text-gray-500 truncate">{email}</span>
                 </div>
               </div>
             </div>
