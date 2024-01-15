@@ -12,8 +12,8 @@ export const signUpSchema = z.object({
 });
 
 export const createGroupSchema = z.object({
-  name: z.string(),
-  userIds: z.array(z.string()),
+  name: z.string().trim().min(1, { message: "Required" }),
+  userIds: z.array(z.string()).min(2, { message: "Please select a minimum of 2 users" }),
 });
 
 export const sendMessageSchema = z.object({

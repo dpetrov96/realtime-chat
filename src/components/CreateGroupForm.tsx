@@ -46,6 +46,7 @@ const CreateGroupForm = ({ onCreateGroup }: CreateGroupFormProps) => {
         <UsersSelector
           users={usersList}
           selectedUsers={selectedUserIds}
+          error={errors?.userIds?.message}
           onClickUser={({ id }) => {
             if(selectedUserIds?.includes(id)) {
               setValue("userIds", selectedUserIds?.filter((currentId) => currentId !== id))
