@@ -22,7 +22,7 @@ const SendMessagesForm = ({ groupId }: { groupId: string }) => {
   };
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 px-4">
       <div className="my-3 flex-grow">
         <textarea
           rows={2}

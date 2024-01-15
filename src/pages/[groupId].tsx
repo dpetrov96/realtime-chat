@@ -34,10 +34,10 @@ export default function Group() {
         <title>Realtime chat</title>
       </Head>
       <div className="flex">
-        <div className="w-[240px] h-screen">
+        <div className="w-[300px] h-screen border-r border-gray-300">
           <GroupsList selectedGroupId={groupId} />
         </div>
-        <div className="w-[calc(100%-240px)] h-screen">
+        <div className="w-[calc(100%-300px)] h-screen">
           <Messages groupId={groupId} />
         </div>
       </div>
