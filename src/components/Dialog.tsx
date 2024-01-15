@@ -1,6 +1,5 @@
 import { useOutsideClick } from '@/hooks';
 import { CloseIcon } from '@/icons';
-import { useEffect } from 'react';
 
 export type DialogProps = {
   title?: string;
@@ -14,24 +13,11 @@ const Dialog = ({ isOpen, title, onClose, children }: DialogProps) => {
     onClose()
   );
 
-  useEffect(() => {
-    const handleEsc = (event: { key: string; }) => {
-       if (event.key === 'Escape') {
-        onClose()
-      }
-    };
-    window.addEventListener('keydown', handleEsc);
-
-    return () => {
-      window.removeEventListener('keydown', handleEsc);
-    };
-  }, [onClose]);
-
   return isOpen ? (
     <div
-      className="fixed z-20 w-full h-full flex items-center justify-center left-0 top-0 bg-white/70 overflow-y-auto"
+      className="fixed z-20 w-full h-full flex items-center justify-center left-0 top-0 bg-white/70 overflow-y-auto px-4"
     >
-      <div ref={dialogContentRef} className="border border-gray-200 md:w-[400px] bg-white p-4 rounded-md shadow-lg">
+      <div ref={dialogContentRef} className="border border-gray-200 w-full md:w-[400px] bg-white p-4 rounded-md shadow-lg">
         <div className="relative mb-6">
           {Boolean(title) && (
             <h2 className="text-xl text-center mt-2 font-bold">

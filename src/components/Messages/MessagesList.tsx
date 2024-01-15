@@ -37,7 +37,7 @@ const MessagesList = ({ groupId }: Props) => {
     },
   );
 
-  return (
+  return Boolean(messages?.length) ? (
     <div className="h-full overflow-y-auto p-4 pb-0">
       {messages?.map(({ text, userId, email, createdAt }, index) => {
         const isMe: boolean = sessionUser?.id === userId.toString();
@@ -65,6 +65,10 @@ const MessagesList = ({ groupId }: Props) => {
           </div>
         );
       })}
+    </div>
+  ) : (
+    <div className="w-full h-full flex items-center justify-center">
+      <h2 className="text-2xl font-semibold mb-4 text-gray-600">Send a first message...</h2>
     </div>
   );
 }
