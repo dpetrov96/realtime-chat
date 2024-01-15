@@ -1,8 +1,10 @@
-import { useState } from "react";
+import clsx from 'clsx';
+import Avarar from 'react-avatar';
 
 type User = {
   id: string;
   username: string;
+  email: string;
 }
 
 export type UserSelectorProps = {
@@ -11,19 +13,33 @@ export type UserSelectorProps = {
   users: User[]
 }
 
-const UsersSelector = ({ users, onClickUser, selectedUsers }: UserSelectorProps) => {
-  return (
-    <div className="max-h-[140px] overflow-y-auto">
-      {users?.map(({ id, username }) => (
+const UsersSelector = ({ users, onClickUser, selectedUsers }: UserSelectorProps) => (
+  <div className="max-h-[300px] overflow-y-auto">
+    {users?.map(({ id, username, email }) => {
+      const isSelected = selectedUsers?.includes(id);
+
+      return (
         <div key={`${id}-${username}`}>
-          <div onClick={() => onClickUser?.({ id, username })} className="flex items-center">
-            <input checked={selectedUsers?.includes(id)} type="checkbox" />
-            <span>{username}</span>
+          <div
+            onClick={() => onClickUser?.({ id, username, email })}
+            className={clsx(
+              "cursor-pointer flex gap-3 items-center border-b border-b-gray-200 py-2 px-2",
+              isSelected && "bg-gray-100"
+            )}
+          >
+            <input checked={isSelected} type="checkbox" />
+            <div className="flex items-center gap-2">
+              <Avarar name={username} size="30" round />
+              <div>
+                <span className="block text-sm font-semibold">{username}</span>
+                <span className="block text-xs italic text-gray-500">{email}</span>
+              </div>
+            </div>
           </div>
         </div>
-      ))}
-    </div>
-  )
-}
+      )
+    })}
+  </div>
+)
 
 export default UsersSelector;

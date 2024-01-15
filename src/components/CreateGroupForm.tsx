@@ -14,7 +14,7 @@ type FormType = z.infer<typeof createGroupSchema>;
 
 const CreateGroupForm = ({ onCreateGroup }: CreateGroupFormProps) => {
   const { data: users } = trpc.userRouter.getUsers.useQuery();
-  const usersList = users?.map(({ _id, username }) => ({ id: `${_id}`, username }));
+  const usersList = users?.map(({ _id, username, email }) => ({ id: `${_id}`, username, email }));
   const { mutateAsync: createGroup } = trpc.roomRouter.createGroup.useMutation({
     onSuccess: () => onCreateGroup?.()
   });
@@ -55,7 +55,9 @@ const CreateGroupForm = ({ onCreateGroup }: CreateGroupFormProps) => {
           }}
         />
       ) : <></>}
-      <Button type="submit">Create</Button>
+      <div className="flex w-full justify-center mt-4">
+        <Button type="submit">Create</Button>
+      </div>
     </form>
   )
 }
