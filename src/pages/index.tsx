@@ -21,8 +21,11 @@ const Home = () => {
       <Head>
         <title>Realtime chat</title>
       </Head>
-      <div>
-        dasda22
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold mb-4">Please select group</h2>
+          <p className="text-gray-500">Choose from your existing groups or create a new one</p>
+        </div>
       </div>
     </>
   )
