@@ -38,7 +38,7 @@ const MessagesList = ({ groupId }: Props) => {
   );
 
   return (
-    <div className="overflow-y-auto p-4 pb-0">
+    <div className="h-full overflow-y-auto p-4 pb-0">
       {messages?.map(({ text, userId, email, createdAt }, index) => {
         const isMe: boolean = sessionUser?.id === userId.toString();
 

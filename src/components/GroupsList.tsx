@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 import Avatar from 'react-avatar';
 
 import { trpc } from '@/utils/trpc';
-import { Button, Dialog, CreateGroupForm } from '@/components';
+import { Dialog, CreateGroupForm } from '@/components';
+import { NewMessage } from '@/icons';
 
 type Props = {
   selectedGroupId?: string;
@@ -18,16 +19,8 @@ const GroupsList = ({ selectedGroupId }: Props) => {
   });
 
   return(
-    <div>
-      <div>
-        <button
-            className="font-semibold text-indigo-600 hover:text-indigo-500"
-            onClick={() => setCreateNewIsOpen(true)}
-          >
-            Create Group
-        </button>
-      </div>
-      <div className="flex flex-col w-full">
+    <div className="relative flex flex-col w-full h-full">
+      <div className="flex flex-col w-full h-full overflow-y-auto">
         {groups?.map(({ _id, name, lastMessage }) => {
           const groupId = `${_id}`;
           const isActive = selectedGroupId === groupId;
@@ -43,12 +36,18 @@ const GroupsList = ({ selectedGroupId }: Props) => {
               </div>
               <div className="w-[calc(100%-40px)] pl-4">
                 <p className="font-bold text-sm truncate mb-1">{name}</p>
-                <p className="italic text-xs text-gray-500 truncate">{lastMessage}</p>
+                <p className="italic text-xs text-gray-500 truncate">{lastMessage || "No messages"}</p>
               </div>
             </div>
           )
         })}
       </div>
+      <button
+        className="w-full flex items-center gap-3 justify-center left-0 bottom-0 bg-white p-4 border-t border-t-gray-200 font-semibold text-indigo-600 hover:text-indigo-500 hover:bg-gray-200 transition-all"
+        onClick={() => setCreateNewIsOpen(true)}
+      >
+        <NewMessage className="w-5 h-5" /> Create Group
+      </button>
       <Dialog title="Create Group" isOpen={createNewIsOpen}>
         <CreateGroupForm
           onCreateGroup={() => {

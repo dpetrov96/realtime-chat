@@ -43,10 +43,13 @@ This will run both the Websocket server and the Nextjs server
 
    Note: You may use the search-bar above, to filter between all the groups in the sidebar.
 
+5. Logout
+
+   By clicking the Top-right most circle icon, it will open a dialog containing the email of the current user and a `logout` button, which will remove the session and redirect to the auth page
+
 # Missing features
 
 - pagination for groups and group messages
 - deleting groups
 - filtering groups
 - searching for users
-- logout

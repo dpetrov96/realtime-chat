@@ -5,3 +5,4 @@ export { default as Dialog } from "./Dialog";
 export { default as CreateGroupForm } from "./CreateGroupForm";
 export { default as UsersSelector } from "./UsersSelector";
 export { default as Messages } from "./Messages";
+export { default as Header } from "./Header";
