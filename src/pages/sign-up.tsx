@@ -3,9 +3,11 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import { trpc } from '@/utils/trpc';
 import { Input, Button } from '@/components';
+import { signUpSchema } from '@/schema';
 
 const SignUp = () => {
   const router = useRouter();
@@ -17,6 +19,7 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: "",
       email: "",

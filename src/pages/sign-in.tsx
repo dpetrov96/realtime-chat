@@ -3,9 +3,11 @@ import Head from 'next/head'
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import { trpc } from '@/utils/trpc';
 import { Input, Button } from '@/components';
+import { signInSchema } from '@/schema';
 
 const SignIn = () => {
   const router = useRouter();
@@ -17,6 +19,7 @@ const SignIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
+    resolver: zodResolver(signInSchema),
     defaultValues: {
       email: "",
       password: "",

@@ -1,20 +1,14 @@
-import { TRPCError } from "@trpc/server";
-import { z } from "zod";
+import { TRPCError } from '@trpc/server';
 
-import { hashPassword, verifyPassword } from "@/utils/auth";
-import { userDataIsValid } from "@/utils/inputValidation";
+import { hashPassword, verifyPassword } from '@/utils/auth';
+import { userDataIsValid } from '@/utils/inputValidation';
+import { signInSchema, signUpSchema } from '@/schema';
 
 import { publicProcedure, router } from "../trpc";
 
 export const authRouter = router({
   createUser: publicProcedure
-    .input(
-      z.object({
-        email: z.string().email(),
-        username: z.string(),
-        password: z.string().min(7),
-      }),
-    )
+    .input(signUpSchema)
     .mutation(async ({ input: userInfo, ctx }) => {
       ctx.logger.info("Creating new user...");
       const invalidUserMessage = userDataIsValid(userInfo);
@@ -61,12 +55,7 @@ export const authRouter = router({
     }),
 
   loginUser: publicProcedure
-    .input(
-      z.object({
-        email: z.string().email(),
-        password: z.string().min(7),
-      }),
-    )
+    .input(signInSchema)
     .mutation(async ({ input: userInfo, ctx }) => {
       ctx.logger.info("Logging in user...");
 

@@ -1,9 +1,10 @@
-import { TRPCError } from "@trpc/server";
-import { observable } from "@trpc/server/observable";
-import { ObjectId } from "mongodb";
-import { z } from "zod";
+import { TRPCError } from '@trpc/server';
+import { observable } from '@trpc/server/observable';
+import { ObjectId } from 'mongodb';
+import { z } from 'zod';
+import { createGroupSchema, sendMessageSchema } from '@/schema';
 
-import { authedProcedure, router } from "@/server/trpc";
+import { authedProcedure, router } from '@/server/trpc';
 
 enum Events {
   SEND_MESSAGE = "SEND_MESSAGE",
@@ -11,12 +12,7 @@ enum Events {
 
 export const roomRouter = router({
   sendMessage: authedProcedure
-    .input(
-      z.object({
-        text: z.string(),
-        groupId: z.string(),
-      }),
-    )
+    .input(sendMessageSchema)
     .mutation(async ({ input, ctx: { ee, collections, logger, user } }) => {
       logger.info("Creating message: " + input.text);
 
@@ -67,12 +63,7 @@ export const roomRouter = router({
       });
     }),
   createGroup: authedProcedure
-    .input(
-      z.object({
-        name: z.string(),
-        userIds: z.array(z.string()),
-      }),
-    )
+    .input(createGroupSchema)
     .mutation(async ({ input, ctx }) => {
       ctx.logger.info("Creating group: " + input.name);
 
