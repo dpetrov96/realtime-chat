@@ -1,40 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# How to run the project
 
-## Getting Started
+## Install packages
 
-First, run the development server:
+      npm install
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Run mongodb docker instance
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+      docker compose up --build
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+This will run the container on PORT 27018 to avoid any conflicts with local instances of mongodb
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Run application
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+      npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This will run both the Websocket server and the Nextjs server
 
-## Learn More
+# How to use the application
 
-To learn more about Next.js, take a look at the following resources:
+1. Register two new users
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   To be able to test communicating between two users you will require two separate accounts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Login
 
-## Deploy on Vercel
+   After creating your users, open two incognito browsers and login with each user separately.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Create a Group
+   After you login, the groups sidebar and chat will be empty.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   To create a new group, click the `Create Group` button.
+   A dialog modal will appear prompting for a name for the `group` and for which users will be invited to the group
+
+   Users cannot be added to groups, after it has been created
+
+4. Sending messages
+
+   In the left sidebar it will display all groups related to the current user.
+   Click on the chat to open it.
+
+   In the chat textarea, you can type your messages, and to send you need to manually click the `send` icon on the right
+
+   Note: You may use the search-bar above, to filter between all the groups in the sidebar.
+
+# Missing features
+
+- pagination for groups and group messages
+- deleting groups
+- filtering groups
+- searching for users
+- logout

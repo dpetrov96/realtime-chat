@@ -1,15 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, ReactElement } from 'react';
 import Head from 'next/head'
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 import { useSession } from "next-auth/react";
+import MessagesLayout from '@/layouts/MessagesLayout';
 
-const GroupsList = dynamic(() => import("@/components/GroupsList"), {
-  ssr: false,
-});
-
-
-export default function Home() {
+const Home = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -22,13 +17,23 @@ export default function Home() {
   }, [router, session, status]);
 
   return (
-    <main>
+    <>
       <Head>
         <title>Realtime chat</title>
       </Head>
-      <div className="flex">
-        <GroupsList />
+      <div>
+        dasda22
       </div>
-    </main>
+    </>
   )
 }
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <MessagesLayout>
+      {page}
+    </MessagesLayout>
+  )
+}
+
+export default Home;

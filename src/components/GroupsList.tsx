@@ -20,7 +20,12 @@ const GroupsList = ({ selectedGroupId }: Props) => {
   return(
     <div>
       <div>
-        <Button onClick={() => setCreateNewIsOpen(true)}>Create new group</Button>
+        <button
+            className="font-semibold text-indigo-600 hover:text-indigo-500"
+            onClick={() => setCreateNewIsOpen(true)}
+          >
+            Create Group
+        </button>
       </div>
       <div className="flex flex-col w-full">
         {groups?.map(({ _id, name, lastMessage }) => {
@@ -30,21 +35,21 @@ const GroupsList = ({ selectedGroupId }: Props) => {
           return (
             <div
               key={`${groupId}-${name}`}
-              onClick={() => router.push(`/${groupId}`)}
-              className={clsx("flex gap-4 px-4 py-2 border-b border-gray-200", isActive ? "bg-gray-100" : "cursor-pointer")}
+              onClick={() => router.push(`/group/${groupId}`)}
+              className={clsx("flex px-4 py-3 border-b border-gray-200", isActive ? "bg-gray-100 cursor-default" : "cursor-pointer")}
             >
-              <div>
+              <div className="w-[40px]">
                 <Avatar name={name} size="40" round />
               </div>
-              <div>
-                <p>{name}</p>
-                <p>{lastMessage}</p>
+              <div className="w-[calc(100%-40px)] pl-4">
+                <p className="font-bold text-sm truncate mb-1">{name}</p>
+                <p className="italic text-xs text-gray-500 truncate">{lastMessage}</p>
               </div>
             </div>
           )
         })}
       </div>
-      <Dialog title="Create new group" isOpen={createNewIsOpen}>
+      <Dialog title="Create Group" isOpen={createNewIsOpen}>
         <CreateGroupForm
           onCreateGroup={() => {
             refetchGroups();

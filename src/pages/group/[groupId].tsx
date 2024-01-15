@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { useSession } from 'next-auth/react';
 import { useParams } from 'next/navigation'
+import MessagesLayout from '@/layouts/MessagesLayout';
 
 const GroupsList = dynamic(() => import("@/components/GroupsList"), {
   ssr: false,
@@ -14,7 +15,7 @@ const Messages = dynamic(() => import("@/components/Messages/index"), {
 });
 
 
-export default function Group() {
+const GroupPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   const params = useParams();
@@ -29,18 +30,21 @@ export default function Group() {
   }, [router, session, status]);
 
   return (
-    <main>
+    <>
       <Head>
         <title>Realtime chat</title>
       </Head>
-      <div className="flex">
-        <div className="w-[300px] h-screen border-r border-gray-300">
-          <GroupsList selectedGroupId={groupId} />
-        </div>
-        <div className="w-[calc(100%-300px)] h-screen">
-          <Messages groupId={groupId} />
-        </div>
-      </div>
-    </main>
+      <Messages groupId={groupId} />
+    </>
   )
 }
+
+GroupPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <MessagesLayout>
+      {page}
+    </MessagesLayout>
+  )
+}
+
+export default GroupPage;
