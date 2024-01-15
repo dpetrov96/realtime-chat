@@ -1,4 +1,8 @@
 <img width="1512" alt="image" src="https://github.com/dpetrov96/realtime-chat/assets/16683108/6309a498-bc0e-4cce-8172-00897261bda8">
+<img width="1512" alt="image" src="https://github.com/dpetrov96/realtime-chat/assets/16683108/0112e7d3-4e6e-4525-aa90-aed30f507c10">
+<img width="1512" alt="image" src="https://github.com/dpetrov96/realtime-chat/assets/16683108/4dc725c5-d96f-4d14-ab25-cce1560b108d">
+
+
 
 # How to run the project
 
