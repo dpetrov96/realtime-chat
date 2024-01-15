@@ -16,11 +16,11 @@ const MessagesLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main>
       <Header />
-      <div style={{ height: "calc(100vh - 60px)", marginTop: 60 }} className="flex w-full">
-        <div className="w-[300px] h-full border-r border-gray-200">
+      <div style={{ display: "flex", width: "100%", height: "calc(100vh - 60px)", marginTop: 60 }}>
+        <div style={{ width: 300, height: "100%" }} className="border-r border-gray-200">
           <GroupsList selectedGroupId={groupId} />
         </div>
-        <div className="w-[calc(100%-300px)] h-full">
+        <div style={{ width: "calc(100% - 300px)", height: "100%" }}>
           {children}
         </div>
       </div>

@@ -6,8 +6,9 @@ import { useForm } from 'react-hook-form';
 
 import { trpc } from '@/utils/trpc';
 import { Input, Button } from '@/components';
+import AuthLayout from '@/layouts/AuthLayout';
 
-export default function SignIn() {
+const SignIn = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const { mutateAsync: trpcLogin } = trpc.authRouter.loginUser.useMutation();
@@ -34,7 +35,7 @@ export default function SignIn() {
       <Head>
         <title>Sign In</title>
       </Head>
-      <div className="container mx-auto">
+      <AuthLayout title="Sign in to your account">
         <form
           onSubmit={handleSubmit(async ({ email, password }) => {
             const user = await trpcLogin({ email, password });
@@ -56,15 +57,21 @@ export default function SignIn() {
             error={errors?.password?.message}
             {...register("password")}
           />
-          <Button type="submit">Login</Button>
+          <div className="flex w-full justify-center mt-6">
+            <Button type="submit">Login</Button>
+          </div>
         </form>
-        <button
-          className="font-semibold text-indigo-600 hover:text-indigo-500"
-          onClick={() => router.push('/sign-up')}
-        >
-          Go to sign up
-        </button>
-      </div>
+        <div className="flex w-full justify-center mt-4">
+          <button
+            className="font-semibold text-indigo-600 hover:text-indigo-500"
+            onClick={() => router.push('/sign-up')}
+          >
+            Go to sign up
+          </button>
+        </div>
+      </AuthLayout>
     </main>
   )
 }
+
+export default SignIn;

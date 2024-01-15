@@ -6,14 +6,9 @@ import { useSession } from 'next-auth/react';
 import { useParams } from 'next/navigation'
 import MessagesLayout from '@/layouts/MessagesLayout';
 
-const GroupsList = dynamic(() => import("@/components/GroupsList"), {
-  ssr: false,
-});
-
 const Messages = dynamic(() => import("@/components/Messages/index"), {
   ssr: false,
 });
-
 
 const GroupPage = () => {
   const { data: session, status } = useSession();
