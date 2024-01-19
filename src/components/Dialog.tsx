@@ -15,7 +15,7 @@ const Dialog = ({ isOpen, title, onClose, children }: DialogProps) => {
 
   return isOpen ? (
     <div
-      className="fixed z-20 w-full h-full flex items-center justify-center left-0 top-0 bg-white/70 overflow-y-auto px-4"
+      className="fixed z-20 w-full h-full flex items-center justify-center left-0 top-0 bg-white/80 overflow-y-auto px-4"
     >
       <div ref={dialogContentRef} className="border border-gray-200 w-full md:w-[400px] bg-white p-4 rounded-md shadow-lg">
         <div className="relative mb-6">

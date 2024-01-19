@@ -38,10 +38,10 @@ const GroupPage = () => {
       </Head>
       <Header />
       <main className="flex w-full h-[calc(100vh-theme(space.14))] mt-14">
-        <div className="w-full md:w-[300px] h-full border-r border-gray-200">
+        <div className="hidden md:block w-full md:w-[300px] h-full border-r border-gray-200">
           <GroupsList selectedGroupId={groupId} />
         </div>
-        <div className="hidden md:flex w-[calc(100%-300px)] h-full">
+        <div className="flex w-full md:w-[calc(100%-300px)] h-full">
           <Messages groupId={groupId} />
         </div>
       </main>
